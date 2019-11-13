@@ -2,7 +2,7 @@
   <div>
     <h1>List of animals</h1>
 
-    <table>
+    <table class="table">
       <tr>
         <th>Species</th>
         <th>Name</th>
@@ -13,13 +13,26 @@
         <td>{{animal.name}}</td>
         <td v-if="animal.dob === ''">Unknown</td>
         <td v-else>{{animal.dob}}</td>
+        <td>
+          <b-button 
+            variant="danger"
+            @click="removeAnimal(index)"
+            >
+              Remove
+          </b-button>
+        </td>
       </tr>
     </table>
 
     <!-- <template>
       <div>
-        <b-table striped hover :items="showAnimal(animals)">
-
+        <b-table striped hover :items="animals">
+          <template v-slot:cell(dob)="data">
+            {{data.value ? data.value : 'Unknown'}}
+          </template>
+          <template v-slot:row-details="row">
+            <b-button variant="danger">test</b-button>
+          </template>
         </b-table>
       </div>
     </template> -->
@@ -61,15 +74,9 @@ export default {
     }
   },
   methods: {
-    showAnimal(animal) {
-      let returnAnimal = animal;
-      if(returnAnimal.dob === '') {
-        returnAnimal.dob = 'Unknown';
-      }
-      return returnAnimal;
+    removeAnimal(index) {
+      this.animals.splice(index, 1);
     }
   }
-  
-    
 }
 </script>
