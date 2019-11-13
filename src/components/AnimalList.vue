@@ -2,6 +2,10 @@
   <div>
     <h1>List of animals</h1>
 
+    <div class="container">
+      <InputForm />
+    </div>
+
     <table class="table">
       <tr>
         <th>Species</th>
@@ -49,7 +53,11 @@
 </template>
 
 <script>
+import InputForm from '@/components/InputForm.vue'
 export default {
+  components: {
+    InputForm
+  },
   data() {
     return {
       animals: [

@@ -2,7 +2,7 @@
   <div id="app">
     <b-container>
       <b-row>
-        <b-col  sm="6" offset="3">
+        <b-col  sm="9" offset="1">
           <animal-list />
         </b-col>
       </b-row>
