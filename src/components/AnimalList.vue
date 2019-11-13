@@ -21,6 +21,14 @@
               Remove
           </b-button>
         </td>
+        <td>
+          <b-button 
+            variant="outline-primary"
+            @click="moveToTop(index)"
+            >
+              Move to top
+          </b-button>
+        </td>
       </tr>
     </table>
 
@@ -76,6 +84,19 @@ export default {
   methods: {
     removeAnimal(index) {
       this.animals.splice(index, 1);
+    },
+    moveToTop(index) {
+      // let tempAnimal = this.animal[index];
+      // this.removeAnimal(index);
+      // this.animals.unshift(tempAnimal);
+
+      let newAnimals = this.animals.filter((item, i) => {
+        item;
+        return i != index;
+      });
+
+      newAnimals.unshift(this.animals[index]);
+      this.animals = newAnimals
     }
   }
 }
