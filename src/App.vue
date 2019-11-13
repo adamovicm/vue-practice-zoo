@@ -1,7 +1,11 @@
 <template>
   <div id="app">
     <b-container>
-      <animal-list />
+      <b-row>
+        <b-col  sm="6" offset="3">
+          <animal-list />
+        </b-col>
+      </b-row>
     </b-container>
   </div>
 </template>

@@ -2,13 +2,27 @@
   <div>
     <h1>List of animals</h1>
 
-    <template>
+    <table>
+      <tr>
+        <th>Species</th>
+        <th>Name</th>
+        <th>Date of Birth</th>
+      </tr>
+      <tr v-for="(animal, index) in animals" :key="index">
+        <td>{{animal.species}}</td>
+        <td>{{animal.name}}</td>
+        <td v-if="animal.dob === ''">Unknown</td>
+        <td v-else>{{animal.dob}}</td>
+      </tr>
+    </table>
+
+    <!-- <template>
       <div>
-        <b-table striped hover :items="animals">
-          
+        <b-table striped hover :items="showAnimal(animals)">
+
         </b-table>
       </div>
-    </template>
+    </template> -->
 
   </div>
 </template>
@@ -41,11 +55,20 @@ export default {
         {
           species: 'Bear',
           name: 'Baloo',
-          dob: '2010-02-12'
+          dob: ''
         },
       ]
     }
-  } 
+  },
+  methods: {
+    showAnimal(animal) {
+      let returnAnimal = animal;
+      if(returnAnimal.dob === '') {
+        returnAnimal.dob = 'Unknown';
+      }
+      return returnAnimal;
+    }
+  }
   
     
 }
