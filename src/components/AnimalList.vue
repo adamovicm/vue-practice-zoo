@@ -3,7 +3,7 @@
     <h1>List of animals</h1>
 
     <div class="container">
-      <InputForm />
+      <InputForm @add-animal="addNewAnimal" />
     </div>
 
     <table class="table">
@@ -105,6 +105,10 @@ export default {
 
       newAnimals.unshift(this.animals[index]);
       this.animals = newAnimals
+    },
+    addNewAnimal(animal) {
+      console.log('kiswbdvfuesw')
+      this.animals.push(animal);
     }
   }
 }
