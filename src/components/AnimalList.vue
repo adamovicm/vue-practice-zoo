@@ -3,7 +3,7 @@
     <h1>List of animals</h1>
 
     <div class="container">
-      <InputForm @add-animal="addNewAnimal" />
+      <InputForm @add-animal="addNewAnimal" :sectors="sectors" />
     </div>
 
     <table class="table">
@@ -11,12 +11,14 @@
         <th>Species</th>
         <th>Name</th>
         <th>Date of Birth</th>
+        <th>Sector</th>
       </tr>
       <tr v-for="(animal, index) in animals" :key="index">
         <td>{{animal.species}}</td>
         <td>{{animal.name}}</td>
         <td v-if="animal.dob === ''">Unknown</td>
         <td v-else>{{animal.dob}}</td>
+        <td>{{sectors[animal.sector]}}</td>
         <td>
           <b-button 
             variant="danger"
@@ -35,20 +37,6 @@
         </td>
       </tr>
     </table>
-
-    <!-- <template>
-      <div>
-        <b-table striped hover :items="animals">
-          <template v-slot:cell(dob)="data">
-            {{data.value ? data.value : 'Unknown'}}
-          </template>
-          <template v-slot:row-details="row">
-            <b-button variant="danger">test</b-button>
-          </template>
-        </b-table>
-      </div>
-    </template> -->
-
   </div>
 </template>
 
@@ -64,28 +52,44 @@ export default {
         {
           species: 'Lion',
           name: 'Simba',
-          dob: '2010-02-12'
+          dob: '2010-02-12',
+          sector: 4
         },
         {
           species: 'Tiger',
           name: 'Shere Khan',
-          dob: '2008-12-25'
+          dob: '2008-12-25',
+          sector: 5
         },
         {
           species: 'Panther',
           name: 'Bagheera',
-          dob: '2015-06-02'
+          dob: '2015-06-02',
+          sector: 5
         },
         {
           species: 'Elephant',
           name: 'Dumbo',
-          dob: '2001-08-10'
+          dob: '2001-08-10',
+          sector: 4
         },
         {
           species: 'Bear',
           name: 'Baloo',
-          dob: ''
+          dob: '',
+          sector: 6
         },
+      ],
+      sectors: [
+        'none',
+        'Marine',
+        'River',
+        'Pond',
+        'Savannah',
+        'Jungle',
+        'Tundra',
+        'Avian',
+        'Swamp'
       ]
     }
   },
@@ -107,7 +111,6 @@ export default {
       this.animals = newAnimals
     },
     addNewAnimal(animal) {
-      console.log('kiswbdvfuesw')
       this.animals.push(animal);
     }
   }

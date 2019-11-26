@@ -25,6 +25,13 @@
         v-model="animal.dob"
       ></b-input>
 
+      <label class="sr-only" for="inline-form-select-sector">sector</label>
+      <b-form-select
+      id="inline-form-select-sector" 
+        v-model="selectedSector" 
+        :options="sectors"
+      ></b-form-select>
+
       <b-button 
         variant="primary" 
         @click.prevent="addAnimal"
@@ -40,17 +47,19 @@ export default {
       animal: {
         species: '',
         name: '',
-        dob: ''
-      }
+        dob: '',
+        sector: 0
+      },
+      selectedSector: 0
     }
   },
   props: [
-    'animals'
+    'sectors'
     ],
   methods: {
     addAnimal() {
+      this.animal.sector = this.sectors.indexOf(this.selectedSector);
       this.$emit('add-animal', this.animal)
-      
     }
   }
 }
