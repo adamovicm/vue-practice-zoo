@@ -2,9 +2,7 @@
   <div>
     <h1>List of animals</h1>
 
-    <div class="container">
-      <InputForm @add-animal="addNewAnimal" :sectors="sectors" />
-    </div>
+    <InputForm @add-animal="addNewAnimal" :sectors="sectors" />
 
     <table class="table">
       <tr>
@@ -37,14 +35,22 @@
         </td>
       </tr>
     </table>
+    <br>
+    <sector-table 
+      :sectors="sectors" 
+      :animals="animals"
+    />
+
   </div>
 </template>
 
 <script>
 import InputForm from '@/components/InputForm.vue'
+import SectorTable from './SectorTable.vue';
 export default {
   components: {
-    InputForm
+    InputForm,
+    SectorTable
   },
   data() {
     return {
